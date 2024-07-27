@@ -4,8 +4,26 @@ Login_Page = Tk()
 Login_Page.title("Login Page")
 Login_Page.maxsize(400,400)
 Login_Page.minsize(400,400)
+def checking_username():
+    if(0 < user_name.get().find(' ')):
+        return 0
+    count_1= int(0)
+    count_2= int(0)
+    for i in user_name.get():
+        if(i>='a' and i<='z'):
+            count_1 += 1
+        if(i>='a' and i<='z' or i>='A' and i<='Z'):
+            count_2 += 1
+    return count_1==count_2 
+
+def checking_pass():
+    return True
 def check(event):
-    tmx.showinfo("Information","It is not full made yet")
+    if(checking_username() and checking_pass()):
+        tmx.showinfo('title','congratulation')
+    else:
+        tmx.showerror('title'
+                      ,'Username does not contain \n Anyspace \n Upperlower character')
 head = Label(Login_Page,text="Login Page Sample",font="monospace 15 bold",
             fg="#00a4f6", bg="#072e42",pady=10)
 head.pack(fill='x')
@@ -23,7 +41,7 @@ usertext.pack(anchor='nw')
 user_field = Entry(Page,textvariable=user_name,font="monospace  "
                    ,bg="#072e42",borderwidth=0,fg="#00a4f6"
                    ,highlightbackground="#126690",highlightcolor="#00a4f6",
-                   highlightthickness=1,insertbackground="#126690")
+                    highlightthickness=1,insertbackground="#126690")
 user_field.pack(anchor='nw',pady=5)
 passtext = Label(Page,text="Password",font="monospace 16 ",
                  fg="#747474",bg="black")
